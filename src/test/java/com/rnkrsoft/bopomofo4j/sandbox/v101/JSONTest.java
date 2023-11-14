@@ -1,11 +1,9 @@
-package com.rnkrsoft.bopomofo4j.sandbox.v100;
+package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by rnkrsoft.com on 2019/9/19.

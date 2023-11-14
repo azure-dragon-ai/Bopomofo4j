@@ -1,4 +1,4 @@
-package com.rnkrsoft.bopomofo4j.sandbox.v100;
+package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 
 import com.rnkrsoft.bopomofo4j.protocol.IBopomofoKernel;
@@ -147,11 +147,11 @@ public class SandboxBopomofoKernel implements IBopomofoKernel {
 
     /**
      * @param mavenCenter 中央仓库地址 https://repo1.maven.org/maven2
-     * @return
+     * @return 最后的正式版本号地址
      */
     String fetchLastReleaseVersionUrl(String mavenCenter, final String groupId, final String artifactId) {
-        mavenCenter = mavenCenter == null ? "https://repo1.maven.org/maven2" : mavenCenter;
-        //https://repo1.maven.org/maven2/com/belerweb/pinyin4j/maven-metadata.xml
+        mavenCenter = mavenCenter == null ?  MAVEN_CENTER: mavenCenter;
+        // https://repo1.maven.org/maven2/com/rnkrsoft/bopomofo4j/bopomofo4j/maven-metadata.xml
         String metadataUrl = mavenCenter + "/" + groupId.replaceAll("\\.", "/") + "/" + artifactId + "/maven-metadata.xml";
         HttpRequest http = HttpRequest.get(metadataUrl)
                 .connectTimeout(10 * 1000)

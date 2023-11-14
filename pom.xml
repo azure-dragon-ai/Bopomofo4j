@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rnkrsoft.bopomofo4j</groupId>
     <artifactId>bopomofo4j</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>Bopomofo4j</name>
     <description>Bopomofo for java, use by convert chinese to bopomofo.</description>
-    <url>https://github.com/rnkrsoft/bopomofo4j.git</url>
+    <url>https://gitee.com/rnkrsoft/Bopomofo4j</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -20,20 +20,13 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <junit.version>4.12</junit.version>
-        <embedded-tomcat.version>1.0.3</embedded-tomcat.version>
+        <junit.version>4.13</junit.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.rnkrsoft.embedded</groupId>
-            <artifactId>embedded-tomcat</artifactId>
-            <version>${embedded-tomcat.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -127,9 +120,9 @@
         </plugins>
     </build>
     <scm>
-        <connection>https://github.com/rnkrsoft/bopomofo4j.git</connection>
-        <developerConnection>https://github.com/rnkrsoft/bopomofo4j.git</developerConnection>
-        <url>https://www.rnkrsoft.com</url>
+        <connection>https://gitee.com/rnkrsoft/Bopomofo4j</connection>
+        <developerConnection>https://gitee.com/rnkrsoft/Bopomofo4j</developerConnection>
+        <url>https://gitee.com/rnkrsoft</url>
     </scm>
     <distributionManagement>
         <snapshotRepository>

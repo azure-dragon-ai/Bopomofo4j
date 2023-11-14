@@ -1,6 +1,7 @@
-package com.rnkrsoft.bopomofo4j.sandbox.v100;
+package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
+import com.rnkrsoft.bopomofo4j.sandbox.v101.LocalPinyinLibrary;
 import org.junit.Test;
 
 import java.util.Arrays;
