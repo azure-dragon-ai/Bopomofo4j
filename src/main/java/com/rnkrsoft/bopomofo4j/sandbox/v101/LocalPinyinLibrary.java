@@ -1,11 +1,9 @@
-package com.rnkrsoft.bopomofo4j.sandbox.v100;
+package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 
 import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +86,7 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
                 }
                 //当前汉字在多音字词组的偏移位置，用于修正词组的替换
                 int offset = w.indexOf(current);
-                Polyphone data = new Polyphone(this.polyphones.get(w).split(PINYIN_SEPARATOR), offset, len);
+                Polyphone data = new Polyphone(w.toCharArray(), this.polyphones.get(w).split(PINYIN_SEPARATOR), offset, len);
                 results.add(data);
             }
         }

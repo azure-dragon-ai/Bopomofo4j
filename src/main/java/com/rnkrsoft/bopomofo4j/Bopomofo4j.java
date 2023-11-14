@@ -1,6 +1,6 @@
 package com.rnkrsoft.bopomofo4j;
 
-import com.rnkrsoft.bopomofo4j.sandbox.v100.SandboxBopomofoKernel;
+import com.rnkrsoft.bopomofo4j.sandbox.v101.SandboxBopomofoKernel;
 
 /**
  * Created by rnkrsoft.com on 2019/9/19.

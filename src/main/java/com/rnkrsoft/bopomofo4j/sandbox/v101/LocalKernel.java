@@ -1,9 +1,10 @@
-package com.rnkrsoft.bopomofo4j.sandbox.v100;
+package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 import com.rnkrsoft.bopomofo4j.protocol.IBopomofoKernel;
 import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,39 +39,45 @@ public class LocalKernel implements IBopomofoKernel {
             if (_char >= 40869 || _char <= 12295) {
                 result.add(Character.toString(_char));
                 types.add(0);
+                i++;
             } else {//如果是支持的中文，则获取汉字的所有拼音
                 String[] pys = pinyinLibrary.getPinyins(_char);
                 if (pys.length == 1) {//单音字
                     String py = pys[0];
                     result.add(py);
                     types.add(1);
+                    i++;
                 } else if (pys.length > 1) {//多音字，需要进行特殊处理
                     //
                     IPinyinLibrary.Polyphone data = pinyinLibrary.getPolyphoneWord(words, _char, i, lastPolyphoneIndex);
                     if (data != null) {
-                        for (int k = 0; k < data.getOffset(); k++) {
-                            result.remove(i - data.getOffset() + k);
-                            types.remove(i - data.getOffset() + k);
+                        // fix https://github.com/rnkrsoft/Bopomofo4j/issues/4
+                        int begin = result.size() - data.getOffset() - 1;
+                        for (int j = result.size() - 1; j > begin; j--) {
+                            result.remove(j);
+                            types.remove(j);
                         }
-                        for (int k = 0; k < data.getWords().length; k++) {
-                            result.add(data.getWords()[k]);
+                        result.addAll(Arrays.asList(data.getTones()));
+                        for (int k = 0; k < data.getTones().length; k++) {
                             types.add(2);
                         }
+                        i += data.getTones().length;
                         //修正偏移，有可能当前字是词组中非第一个字
-                        i = i - data.getOffset() + data.getWords().length - 1;
                         //最后处理过的多音字位置，以防止一个多音字词组有多个多音字，例如患难与共，难和共都是多音字
                         lastPolyphoneIndex = i;
                     } else {//没有找到多音字的词组，默认使用第一个发音
                         String py = pys[0];
                         result.add(py);
                         types.add(1);
+                        i++;
                     }
                 } else {//未发现
                     result.add(Character.toString(_char));
                     types.add(0);
+                    i++;
                 }
             }
-            i++;
+
         }
         return handlePinyin(result, types, toneType, upper, cap, split);
     }
@@ -112,12 +119,12 @@ public class LocalKernel implements IBopomofoKernel {
     /**
      * 进行拼音处理
      *
-     * @param result
-     * @param types
-     * @param toneType
-     * @param upper
-     * @param cap
-     * @param split
+     * @param result 拼音
+     * @param types 汉字是否为多音字
+     * @param toneType 音调类型
+     * @param upper 是否大写
+     * @param cap 是否首字母大写
+     * @param split 拼音分割字符
      * @return
      */
     final String handlePinyin(List<String> result, List<Integer> types, int toneType, boolean upper, boolean cap, String split) {
@@ -135,10 +142,17 @@ public class LocalKernel implements IBopomofoKernel {
                         //寻找在有声调声母中的位置
                         char[] cs = Vowels.parse(w);
                         py1 += (cs == null ? w : cs[0]);
-                        tone = (cs == null ? -1 : Character.digit(cs[1], 10));
+                        // fix https://gitee.com/rnkrsoft/Bopomofo4j/issues/I42WAK
+                        if(cs != null){
+                            int newTone = Character.digit(cs[1], 10);
+                            // 如果新的音调大于已有的轻声则赋值
+                            if(newTone > tone){
+                                tone = newTone;
+                            }
+                        }
                     }
                     //如果是带音调数字形式，则将音调添加到末尾
-                    py1 = py1 + (toneType == 1 ? tone + 1 : "");
+                    py1 = py1 + (toneType == 1 && tone > -1 ? tone : "");
                 } else {
                     py1 = py;
                 }

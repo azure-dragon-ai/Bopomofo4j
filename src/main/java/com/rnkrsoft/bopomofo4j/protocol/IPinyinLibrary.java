@@ -9,18 +9,36 @@ public interface IPinyinLibrary {
      * 封装多音字
      */
     final class Polyphone {
-        String[] words;
+        /**
+         * 多音字词组
+         */
+        char[] words;
+        /**
+         * 多音字音调
+         */
+        String[] tones;
+        /**
+         * 偏移位置
+         */
         int offset;
+        /**
+         * 词组长度
+         */
         int length;
 
-        public Polyphone(String[] words, int offset, int length) {
+        public Polyphone(char[] words, String[] tones, int offset, int length) {
             this.words = words;
+            this.tones = tones;
             this.offset = offset;
             this.length = length;
         }
 
-        public String[] getWords() {
+        public char[] getWords() {
             return words;
+        }
+
+        public String[] getTones() {
+            return tones;
         }
 
         public int getOffset() {
