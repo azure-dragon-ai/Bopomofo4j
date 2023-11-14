@@ -9,6 +9,7 @@
 5. 词库实现沙盒模式进行热加载，也可使用本地模式
 
 # 拼音搜索引擎
+没有钱续ECS，所以官网搜索不能用
 官网在线搜索：[pinyin.rnkrsoft.com](https://pinyin.rnkrsoft.com) ，当发现不能正确解析词语读音，可以来这里维护词库，向我们提出申请。
 
 
@@ -18,7 +19,7 @@
 <dependency>
     <groupId>com.rnkrsoft.bopomofo4j</groupId>
     <artifactId>bopomofo4j</artifactId>
-    <version>最新版本号</version>
+    <version>最新版本号</version>
 </dependency>
 ```
 最新版本号见上方，本库支持沙盒模式，即使使用低版本依然可以获取最新的功能实现。

@@ -53,9 +53,11 @@ public class LocalKernel implements IBopomofoKernel {
                     if (data != null) {
                         // fix https://github.com/rnkrsoft/Bopomofo4j/issues/4
                         int begin = result.size() - data.getOffset() - 1;
+                        // 往回删除错误的词组已放入结果的字
                         for (int j = result.size() - 1; j > begin; j--) {
                             result.remove(j);
                             types.remove(j);
+                            i--;
                         }
                         result.addAll(Arrays.asList(data.getTones()));
                         for (int k = 0; k < data.getTones().length; k++) {
