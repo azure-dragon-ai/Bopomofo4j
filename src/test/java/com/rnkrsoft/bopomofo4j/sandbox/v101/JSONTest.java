@@ -55,7 +55,7 @@ public class JSONTest {
 
     @Test
     public void testParse2() throws Exception {
-        Map<String, String> map = JSON.parse(JSONTest.class.getClassLoader().getResource("META-INF/resources/bopomofo/libs/v100/polyphones.json"));
+        Map<String, String> map = JSON.parse(JSONTest.class.getClassLoader().getResource("META-INF/resources/bopomofo/libs/v101/polyphones.json"));
         System.out.println(map);
     }
 }

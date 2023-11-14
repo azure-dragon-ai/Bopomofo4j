@@ -15,10 +15,10 @@ import java.util.Map;
 public class LocalPinyinLibrary implements IPinyinLibrary {
     static final String PINYIN_SEPARATOR = ","; // 拼音分隔符
     final static LocalPinyinLibrary library = new LocalPinyinLibrary().init();
-    final static String PINYINS_FILE_NAME = "META-INF/resources/bopomofo/libs/v100/pinyins.json";
-    final static String POLYPHONES_FILE_NAME = "META-INF/resources/bopomofo/libs/v100/polyphones.json";
-    final static String CHT2CHS_FILE_NAME = "META-INF/resources/bopomofo/libs/v100/cht2chs.json";
-    final static String CHS2CHT_FILE_NAME = "META-INF/resources/bopomofo/libs/v100/chs2cht.json";
+    final static String PINYINS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/pinyins.json";
+    final static String POLYPHONES_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/polyphones.json";
+    final static String CHT2CHS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/cht2chs.json";
+    final static String CHS2CHT_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/chs2cht.json";
     Map<String, String> pinyins;
     Map<String, String> polyphones;
     Map<String, String> cht2chs;

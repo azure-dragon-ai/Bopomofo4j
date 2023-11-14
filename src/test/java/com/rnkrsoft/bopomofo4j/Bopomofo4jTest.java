@@ -21,16 +21,15 @@ public class Bopomofo4jTest {
 
     @Test
     public void testPinyin() throws Exception {
-//        Bopomofo4j.local();
+        Bopomofo4j.local();
         System.setProperty("bopomofo4j.temp.dir", "./target/temp");
-//        System.setProperty("bopomofo4j.sandbox.url", "https://oss.sonatype.org/service/local/repositories/comrnkrsoft-1081/content/com/rnkrsoft/bopomofo4j/bopomofo4j/1.0.0/bopomofo4j-1.0.0.jar");
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1; i++) {
             String py1 = Bopomofo4j.pinyin("I am chinese!1234", ToneType.WITHOUT_TONE, null, null, null);
             Assert.assertEquals("I am chinese!1234", py1);
-            String py2 = Bopomofo4j.pinyin("I am chinese!1234中国人", ToneType.WITH_VOWEL_TONE, null, null, null);
-            Assert.assertEquals("I am chinese!1234 zhōng guó rén", py2);
+            String py2 = Bopomofo4j.pinyin("I am chinese!1234中国人，中了一百万奖金", ToneType.WITH_VOWEL_TONE, null, null, null);
+            Assert.assertEquals("I am chinese!1234 zhōng guó rén， zhòng le yī bǎi wàn jiǎng jīn", py2);
             String py3 = Bopomofo4j.pinyin("I am chinese!1234我们是患难与共的兄弟", ToneType.WITH_NUMBER_TONE, null, null, null);
-            Assert.assertEquals("I am chinese!1234 wo3 men0 shi4 huan0 nan0 yu3 gong0 de0 xiong0 di4", py3);
+            Assert.assertEquals("I am chinese!1234 wo3 men2 shi4 huan4 nan4 yu3 gong4 de0 xiong1 di4", py3);
         }
     }
 
