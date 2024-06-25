@@ -43,7 +43,9 @@ public class Test1 {
                 try (Scanner sc = new Scanner(new FileReader(fileName))) {
                     while (sc.hasNextLine()) { // 按行读取字符串
                         String line = sc.nextLine();
-                        this.getChineseChars(line);
+                        if(!line.equals("")) {
+                            this.getChineseChars(line);
+                        }
                     }
                 }
             }       
