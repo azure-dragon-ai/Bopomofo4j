@@ -51,7 +51,7 @@ public class Test1 {
         List<String> list = new ArrayList<>();
         key = "pinyin" + 0;
         chineseChars = map.get(key);
-        int min = Math.round(500 / (pinyins.length * pinyins.length));
+        int min = Math.round(400 / (pinyins.length * pinyins.length));
         int len = Math.min(min, chineseChars.length);
         for(int i = 0 ; i < len ; i++) {
             list.add(chineseChars[i]);
