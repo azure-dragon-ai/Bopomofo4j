@@ -29,8 +29,12 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
-        // 汉语句子->无音调拼音 骨髓
-        String words = "24小时监视";
+        //华动&实验
+        this.getChineseChars("华动&实验");
+    }
+
+    public void getChineseChars(String words) throws Exception {
+        // 汉语句子->无音调拼音
         String v3 = Bopomofo4j.pinyin(words, 2, false, false, " ");
         System.out.println(v3);
         String[] pinyins = v3.split(" ");
@@ -43,7 +47,7 @@ public class Test1 {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
             System.out.println("---------------");
-            // System.out.println(chineseCharsStr);
+            System.out.println(chineseCharsStr);
             chineseChars = chineseCharsStr.split(" ");
             num = num * chineseChars.length;
             // System.out.println(chineseChars.length);
@@ -60,7 +64,7 @@ public class Test1 {
         }
         for (int i = 1; i < pinyins.length; i++) {
             key = "pinyin" + i;
-            list = this.make(list, map.get(key), min);
+            //list = this.make(list, map.get(key), min);
         }
 
         File file = new File("docs/" + words + ".txt");

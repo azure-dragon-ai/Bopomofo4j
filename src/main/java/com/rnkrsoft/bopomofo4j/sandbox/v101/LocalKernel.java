@@ -175,7 +175,7 @@ public class LocalKernel implements IBopomofoKernel {
                 }
                 py1 = split.length() > 0 && pys.length() > 0 ? split + py1 : py1;
             } else {//如果不需要处理的非拼音
-                py1 = py;
+                py1 = split.length() > 0 ? split + py : py;
             }
             pys += py1;
         }
