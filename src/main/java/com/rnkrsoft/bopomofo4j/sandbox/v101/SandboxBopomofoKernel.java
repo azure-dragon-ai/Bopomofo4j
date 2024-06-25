@@ -102,6 +102,12 @@ public class SandboxBopomofoKernel implements IBopomofoKernel {
         return this.proxy.pinyin(words, toneType, upper, cap, split);
     }
 
+    public String getChineseChars(String words, String split) {
+        check();
+        //代理给代理实现
+        return this.proxy.getChineseChars(words, split);
+    }
+
 
     @Override
     public String cht2chs(String words) {

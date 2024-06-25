@@ -16,11 +16,12 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
     static final String PINYIN_SEPARATOR = ","; // 拼音分隔符
     final static LocalPinyinLibrary library = new LocalPinyinLibrary().init();
     final static String PINYINS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/pinyins.json";
+    final static String PINYIN2CHS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/pinyin2chs.json";
     final static String POLYPHONES_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/polyphones.json";
     final static String CHT2CHS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/cht2chs.json";
     final static String CHS2CHT_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/chs2cht.json";
     Map<String, String> pinyins;
-    Map<String, String> pinyin2chs;
+    Map<String, List<String>> pinyin2chs;
     Map<String, String> polyphones;
     Map<String, String> cht2chs;
     Map<String, String> chs2cht;
@@ -31,6 +32,14 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
             URL url = this.getClass().getClassLoader().getResource(PINYINS_FILE_NAME);
             try {
                 this.pinyins = JSON.parse(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        {
+            URL url = this.getClass().getClassLoader().getResource(PINYINS_FILE_NAME);
+            try {
+                this.pinyin2chs = JSON.parseList(url);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -109,12 +118,12 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
         return pinyin2chs;
     }
 
-    public String[] getChineseChars(char w) {
-        String chs = this.pinyin2chs.get(String.valueOf(w));
+    public List<String> getChineseChars(String w) {
+        List<String> chs = this.pinyin2chs.get(w);
         if (chs == null) {
-            return new String[] {};
+            return new ArrayList<String>();
         } else {
-            return chs.split(PINYIN_SEPARATOR);
+            return chs;
         }
     }
 

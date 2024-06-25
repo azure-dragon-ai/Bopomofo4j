@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import com.rnkrsoft.bopomofo4j.utils.JacksonUtil;
 
 /**
  * Created by rnkrsoft.com on 2019/9/19.
@@ -25,6 +28,31 @@ public class JSON {
             is = url.openStream();
             String json = read(is);
             return JSON.parse(json);
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                is = null;
+            }
+        }
+    }
+
+    /**
+     * 将传入的URL解析为Map
+     *
+     * @param url URL对象
+     * @return 键值对
+     * @throws IOException IO异常
+     */
+    public static final Map<String, List<String>> parseList(URL url) throws IOException {
+        InputStream is = null;
+        try {
+            is = url.openStream();
+            String json = read(is);
+            return JacksonUtil.parseJson(json);
         } finally {
             if (is != null) {
                 try {

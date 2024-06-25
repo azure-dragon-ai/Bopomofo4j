@@ -117,6 +117,21 @@ public class JacksonUtil {
         return null;
     }
 
+    public static Map<String, List<String>> parseJson(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node;
+        try {
+            node = mapper.readTree(json);
+
+            if (node != null)
+                return mapper.convertValue(node, new TypeReference<Map<String, List<String>>>() {
+                });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static Map<Integer, List<String>> parseMap(String body, String field) {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node;

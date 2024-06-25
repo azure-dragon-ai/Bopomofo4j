@@ -1,5 +1,7 @@
 package com.rnkrsoft.bopomofo4j.protocol;
 
+import java.util.List;
+
 /**
  * Created by rnkrsoft.com on 2019/9/19.
  * 拼音核心类接口，此接口实现类为热加载实现
@@ -16,6 +18,8 @@ public interface IBopomofoKernel {
      * @return 拼音
      */
     String pinyin(String words, Integer toneType, Boolean upper, Boolean cap, String split);
+
+    public String getChineseChars(String w, String split);
 
     /**
      * 将繁体中文转换为简体中文

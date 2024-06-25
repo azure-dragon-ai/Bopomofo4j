@@ -25,6 +25,13 @@ public class Test1 {
     }
 
     @Test
+    public void testGetChineseChars() throws Exception {
+       //汉语句子->无音调拼音
+        String v3 = Bopomofo4j.getChineseChars("nüe", " ");
+        System.out.println(v3);
+    }
+
+    @Test
     public void testChineseChar() throws Exception {
        IPinyinLibrary pinyinLibrary = LocalPinyinLibrary.getPinyinLibrary();
        Map<String, List<String>> chieseChars = pinyinLibrary.initChineseChars();
