@@ -38,8 +38,8 @@ public class Test1 {
         for(int i = 0 ; i < pinyins.length ; i++) {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
-            System.out.println("---------------");
-            System.out.println(chineseCharsStr);
+            //System.out.println("---------------");
+            //System.out.println(chineseCharsStr);
             chineseChars = chineseCharsStr.split(" ");
             map.put(key, chineseChars);
         }
