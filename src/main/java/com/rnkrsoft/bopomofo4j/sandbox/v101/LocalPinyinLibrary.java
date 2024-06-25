@@ -1,6 +1,5 @@
 package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
-
 import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
 
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
     Map<String, String> chs2cht;
 
     public LocalPinyinLibrary init() {
-        //加载本地的拼音库
+        // 加载本地的拼音库
         {
             URL url = this.getClass().getClassLoader().getResource(PINYINS_FILE_NAME);
             try {
@@ -64,12 +63,11 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
     public String[] getPinyins(char w) {
         String py = this.pinyins.get(String.valueOf(w));
         if (py == null) {
-            return new String[]{};
+            return new String[] {};
         } else {
             return py.split(PINYIN_SEPARATOR);
         }
     }
-
 
     public Polyphone getPolyphoneWord(String words, char current, int pos, int lastPolyphoneIndex) {
         final List<Polyphone> results = new ArrayList<Polyphone>();
@@ -84,15 +82,16 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
                 if (len > maxMatchLen) {
                     maxMatchLen = len;
                 }
-                //当前汉字在多音字词组的偏移位置，用于修正词组的替换
+                // 当前汉字在多音字词组的偏移位置，用于修正词组的替换
                 int offset = w.indexOf(current);
-                Polyphone data = new Polyphone(w.toCharArray(), this.polyphones.get(w).split(PINYIN_SEPARATOR), offset, len);
+                Polyphone data = new Polyphone(w.toCharArray(), this.polyphones.get(w).split(PINYIN_SEPARATOR), offset,
+                        len);
                 results.add(data);
             }
         }
         if (results.size() == 1) {
             return results.get(0);
-        } else if (results.size() > 1) {//如果存在多个匹配的多音字词组，以最大匹配项为最佳答案,例如词库中有'中国人'和'中国',最理想的答案应该是最大匹配
+        } else if (results.size() > 1) {// 如果存在多个匹配的多音字词组，以最大匹配项为最佳答案,例如词库中有'中国人'和'中国',最理想的答案应该是最大匹配
             for (int i = 0; i < results.size(); i++) {
                 Polyphone value = results.get(i);
                 if (value.getLength() == maxMatchLen) {
