@@ -54,6 +54,10 @@ public abstract class Bopomofo4j {
         return KERNEL.pinyin(words, toneType, upper, cap, split);
     }
 
+    public static final String getChineseChars(String words, String split) {
+        return KERNEL.getChineseChars(words, split);
+    }
+
     /**
      * 将繁体中文转换为简体中文
      * 

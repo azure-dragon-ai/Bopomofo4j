@@ -84,6 +84,11 @@ public class LocalKernel implements IBopomofoKernel {
         return handlePinyin(result, types, toneType, upper, cap, split);
     }
 
+    public String getChineseChars(String w, String split) {
+        List<String> chineseChars = pinyinLibrary.getChineseChars(w);
+        return String.join(split, chineseChars);
+    }
+
     @Override
     public String cht2chs(String words) {
         char[] chars = words.toCharArray();

@@ -62,7 +62,7 @@ public interface IPinyinLibrary {
 
     public Map<String, List<String>> initChineseChars();
 
-    public String[] getChineseChars(char w);
+    public List<String> getChineseChars(String w);
 
     /**
      * 获取多音字词，返回时返回替换起始位置和结束位置
