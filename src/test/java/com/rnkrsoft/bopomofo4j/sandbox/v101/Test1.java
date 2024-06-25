@@ -6,11 +6,13 @@ import com.rnkrsoft.bopomofo4j.sandbox.v101.Vowels;
 import com.rnkrsoft.bopomofo4j.utils.JacksonUtil;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,8 +31,16 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
-        //华动&实验
+        // 大熊猫保护红线
         this.getChineseChars("24华动&实验");
+        String fileName = "docs/block/大熊猫保护红线.txt";
+
+        try (Scanner sc = new Scanner(new FileReader(fileName))) {
+            while (sc.hasNextLine()) { // 按行读取字符串
+                String line = sc.nextLine();
+                this.getChineseChars(line);
+            }
+        }
     }
 
     public void getChineseChars(String words) throws Exception {
@@ -46,8 +56,8 @@ public class Test1 {
         for (int i = 0; i < pinyins.length; i++) {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
-            System.out.println("---------------");
-            System.out.println(chineseCharsStr);
+            // System.out.println("---------------");
+            // System.out.println(chineseCharsStr);
             chineseChars = chineseCharsStr.split(" ");
             num = num * chineseChars.length;
             // System.out.println(chineseChars.length);
@@ -64,7 +74,7 @@ public class Test1 {
         }
         for (int i = 1; i < pinyins.length; i++) {
             key = "pinyin" + i;
-            //list = this.make(list, map.get(key), min);
+            list = this.make(list, map.get(key), min);
         }
 
         File file = new File("docs/" + words + ".txt");
