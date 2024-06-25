@@ -88,6 +88,8 @@ public class LocalKernel implements IBopomofoKernel {
     public String getChineseChars(String w, String split) {
         if(StringUtil.isNumeric(w)) {
             return w;
+        } else if(w.equals("&")) {
+            return w;
         } else {
             List<String> chineseChars = pinyinLibrary.getChineseChars(w);
             return String.join(split, chineseChars);
@@ -175,7 +177,12 @@ public class LocalKernel implements IBopomofoKernel {
                 }
                 py1 = split.length() > 0 && pys.length() > 0 ? split + py1 : py1;
             } else {//如果不需要处理的非拼音
-                py1 = split.length() > 0 ? split + py : py;
+                if(py.equals("&")) {
+                    py1 = split.length() > 0 ? split + py : py;
+                } else {
+                    py1 = py;
+                }
+                
             }
             pys += py1;
         }

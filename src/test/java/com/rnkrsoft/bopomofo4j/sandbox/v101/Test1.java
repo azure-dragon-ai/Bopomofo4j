@@ -30,7 +30,7 @@ public class Test1 {
     @Test
     public void testGetChineseChars() throws Exception {
         //华动&实验
-        this.getChineseChars("华动&实验");
+        this.getChineseChars("24华动&实验");
     }
 
     public void getChineseChars(String words) throws Exception {
