@@ -5,6 +5,8 @@ import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
 import com.rnkrsoft.bopomofo4j.sandbox.v101.Vowels;
 import com.rnkrsoft.bopomofo4j.utils.JacksonUtil;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,8 +29,36 @@ public class Test1 {
     @Test
     public void testGetChineseChars() throws Exception {
        //汉语句子->无音调拼音 骨髓
-        String v3 = Bopomofo4j.getChineseChars("nüe", " ");
-        System.out.println(v3);
+        String v3 = Bopomofo4j.pinyin("骨髓",2, false, false, " ");
+        String[] pinyins = v3.split(" ");
+        Map<String, String[]> map = new HashMap<>();
+        String chineseCharsStr;
+        String[] chineseChars;
+        String key = "";
+        for(int i = 0 ; i < pinyins.length ; i++) {
+            key = "pinyin" + i;
+            chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
+            chineseChars = chineseCharsStr.split(" ");
+            map.put(key, chineseChars);
+        }
+        List<String> list = new ArrayList<>();
+        for (Map.Entry <String, String[]> entry : map.entrySet()) {
+            list = this.make(list, entry.getValue());
+        }
+        
+        for(int i = 0 ; i < list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+    }
+
+    public List<String> make(List<String> list, String[] chars) {
+        List<String> newList = new ArrayList<>();
+        for(int i = 0 ; i < list.size() ; i++) {
+            for(int j = 0 ; j < chars.length ; j++) {
+                newList.add(list.get(i) + chars[j]);
+            }
+        }
+        return newList;
     }
 
     @Test
