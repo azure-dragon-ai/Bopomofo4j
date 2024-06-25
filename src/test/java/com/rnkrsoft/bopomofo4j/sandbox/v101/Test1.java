@@ -63,7 +63,7 @@ public class Test1 {
             list = this.make(list, map.get(key), min);
         }
 
-        File file = new File(words + ".txt");
+        File file = new File("docs/" + words + ".txt");
         if (!file.exists()) {
             file.createNewFile();
         }
