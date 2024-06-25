@@ -19,6 +19,7 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
     final static String CHT2CHS_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/cht2chs.json";
     final static String CHS2CHT_FILE_NAME = "META-INF/resources/bopomofo/libs/v101/chs2cht.json";
     Map<String, String> pinyins;
+    Map<String, String> pinyin2chs;
     Map<String, String> polyphones;
     Map<String, String> cht2chs;
     Map<String, String> chs2cht;
@@ -66,6 +67,15 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
             return new String[] {};
         } else {
             return py.split(PINYIN_SEPARATOR);
+        }
+    }
+
+    public String[] getChineseChars(char w) {
+        String chs = this.pinyin2chs.get(String.valueOf(w));
+        if (chs == null) {
+            return new String[] {};
+        } else {
+            return chs.split(PINYIN_SEPARATOR);
         }
     }
 
