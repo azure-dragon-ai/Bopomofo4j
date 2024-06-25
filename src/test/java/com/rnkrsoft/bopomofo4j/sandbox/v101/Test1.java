@@ -38,7 +38,7 @@ public class Test1 {
         String fileName;
         for (File f : fs) { // 遍历File[]数组
             if (!f.isDirectory()) {
-                fileName = path + "/" + f.getName() + ".txt";
+                fileName = path + "/" + f.getName();
 
                 try (Scanner sc = new Scanner(new FileReader(fileName))) {
                     while (sc.hasNextLine()) { // 按行读取字符串
