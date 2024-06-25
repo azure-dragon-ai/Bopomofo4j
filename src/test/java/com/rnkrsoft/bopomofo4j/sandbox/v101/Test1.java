@@ -63,8 +63,9 @@ public class Test1 {
 
     public List<String> make(List<String> list, String[] chars) {
         List<String> newList = new ArrayList<>();
+        int len = Math.min(50, chars.length);
         for(int i = 0 ; i < list.size() ; i++) {
-            for(int j = 0 ; j < chars.length ; j++) {
+            for(int j = 0 ; j < len ; j++) {
                 newList.add(list.get(i) + chars[j]);
             }
         }
