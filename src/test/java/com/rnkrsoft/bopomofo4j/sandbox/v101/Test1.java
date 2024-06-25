@@ -88,9 +88,10 @@ public class Test1 {
 
         String filePath = "docs/" + words + ".txt";
         File file = new File(filePath);
-        if (!file.exists()) {
-            file.createNewFile();
+        if (file.exists()) {
+            file.delete();
         }
+        file.createNewFile();
         FileWriter fileWritter = new FileWriter(file, true);
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
