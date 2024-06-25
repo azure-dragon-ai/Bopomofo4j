@@ -9,3 +9,5 @@ target
 .DS_Store
 .svn
 ~
+.vscode
+bopomofo4j-temp
