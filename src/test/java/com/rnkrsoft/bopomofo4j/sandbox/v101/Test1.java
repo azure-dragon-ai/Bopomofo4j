@@ -44,8 +44,14 @@ public class Test1 {
             map.put(key, chineseChars);
         }
         List<String> list = new ArrayList<>();
-        for (Map.Entry <String, String[]> entry : map.entrySet()) {
-            list = this.make(list, entry.getValue());
+        key = "pinyin" + 0;
+        chineseChars = map.get(key);
+        for(int i = 0 ; i < chineseChars.length ; i++) {
+            list.add(chineseChars[i]);
+        }
+        for(int i = 1 ; i < pinyins.length ; i++) {
+            key = "pinyin" + i;
+            list = this.make(list, map.get(key));
         }
         
         for(int i = 0 ; i < list.size() ; i++) {
