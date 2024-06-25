@@ -31,6 +31,11 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
+        this.getChineseChars("抗议");
+    }
+
+    @Test
+    public void testGetChineseCharsFile() throws Exception {
         // 大熊猫保护红线
         String path = "docs/block"; // 要遍历的路径
         File file = new File(path); // 获取其file对象
