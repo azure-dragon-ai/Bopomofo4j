@@ -26,7 +26,7 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
-       //汉语句子->无音调拼音
+       //汉语句子->无音调拼音 骨髓
         String v3 = Bopomofo4j.getChineseChars("nüe", " ");
         System.out.println(v3);
     }

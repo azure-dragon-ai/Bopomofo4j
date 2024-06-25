@@ -37,7 +37,7 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
             }
         }
         {
-            URL url = this.getClass().getClassLoader().getResource(PINYINS_FILE_NAME);
+            URL url = this.getClass().getClassLoader().getResource(PINYIN2CHS_FILE_NAME);
             try {
                 this.pinyin2chs = JSON.parseList(url);
             } catch (IOException e) {
