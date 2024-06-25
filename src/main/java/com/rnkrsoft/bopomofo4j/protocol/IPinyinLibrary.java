@@ -1,5 +1,7 @@
 package com.rnkrsoft.bopomofo4j.protocol;
 
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by rnkrsoft.com on 2019/9/19.
@@ -55,6 +57,12 @@ public interface IPinyinLibrary {
      * @return 拼音数组
      */
     String[] getPinyins(char w);
+
+    public String getChar(String py);
+
+    public Map<String, List<String>> initChineseChars();
+
+    public String[] getChineseChars(char w);
 
     /**
      * 获取多音字词，返回时返回替换起始位置和结束位置

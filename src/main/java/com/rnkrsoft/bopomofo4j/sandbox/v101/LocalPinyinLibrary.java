@@ -5,6 +5,7 @@ import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,44 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
         } else {
             return py.split(PINYIN_SEPARATOR);
         }
+    }
+
+    public String getChar(String py) {
+        String py1 = "";
+        char[] chars = py.toCharArray();
+        for (int idx = 0; idx < chars.length; idx++) {
+            char w = chars[idx];
+            //寻找在有声调声母中的位置
+            char[] cs = Vowels.parse(w);
+            py1 += (cs == null ? w : cs[0]);
+        }
+        return py1;
+    }
+
+    public Map<String, List<String>> initChineseChars() {
+        String key = "";
+        String value = "";
+        String k = "";
+        String[] pinyins;
+        Map<String, List<String>> pinyin2chs = new HashMap<>();
+        List<String> chs;
+        for (Map.Entry <String, String> entry : this.pinyins.entrySet()) {
+            key = entry.getKey();
+            value = entry.getValue();
+            pinyins = value.split(PINYIN_SEPARATOR);
+            for(int i = 0 ; i < pinyins.length ; i++) {
+                k = this.getChar(pinyins[i]);
+                if(pinyin2chs.containsKey(k)) {
+                    chs = pinyin2chs.get(k);
+                } else {
+                    chs = new ArrayList<>();
+                    // pinyin2chs.put(k, chs);
+                }
+                chs.add(key);
+                pinyin2chs.put(k, chs);
+            }
+        }
+        return pinyin2chs;
     }
 
     public String[] getChineseChars(char w) {
