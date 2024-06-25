@@ -39,7 +39,7 @@ public class Test1 {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
             System.out.println("---------------");
-            //System.out.println(chineseCharsStr);
+            System.out.println(chineseCharsStr);
             System.out.println(chineseCharsStr.length());
             chineseChars = chineseCharsStr.split(" ");
             map.put(key, chineseChars);
