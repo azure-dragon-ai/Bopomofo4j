@@ -2,6 +2,7 @@ package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
 import com.rnkrsoft.bopomofo4j.protocol.IBopomofoKernel;
 import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
+import com.rnkrsoft.bopomofo4j.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,8 +86,12 @@ public class LocalKernel implements IBopomofoKernel {
     }
 
     public String getChineseChars(String w, String split) {
-        List<String> chineseChars = pinyinLibrary.getChineseChars(w);
-        return String.join(split, chineseChars);
+        if(StringUtil.isNumeric(w)) {
+            return w;
+        } else {
+            List<String> chineseChars = pinyinLibrary.getChineseChars(w);
+            return String.join(split, chineseChars);
+        }
     }
 
     @Override
