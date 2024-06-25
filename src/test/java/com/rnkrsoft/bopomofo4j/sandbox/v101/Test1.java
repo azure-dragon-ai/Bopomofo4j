@@ -77,11 +77,12 @@ public class Test1 {
             list = this.make(list, map.get(key), min);
         }
 
-        File file = new File("docs/" + words + ".txt");
+        String filePath = "docs/" + words + ".txt";
+        File file = new File(filePath);
         if (!file.exists()) {
             file.createNewFile();
         }
-        FileWriter fileWritter = new FileWriter(file.getName(), true);
+        FileWriter fileWritter = new FileWriter(file, true);
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
             fileWritter.write(list.get(i) + "\n");
