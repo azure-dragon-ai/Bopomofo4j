@@ -40,8 +40,8 @@ public class Test1 {
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
             System.out.println("---------------");
             System.out.println(chineseCharsStr);
-            System.out.println(chineseCharsStr.length());
             chineseChars = chineseCharsStr.split(" ");
+            System.out.println(chineseChars.length);
             map.put(key, chineseChars);
         }
         List<String> list = new ArrayList<>();
