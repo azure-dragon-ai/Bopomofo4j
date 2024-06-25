@@ -15,16 +15,17 @@ public abstract class Bopomofo4j {
     /**
      * 本地库运行拼音转换库
      */
-    public static final void local(){
+    public static final void local() {
         KERNEL.local();
     }
 
     /**
      * 沙盒运行拼音转换库
      */
-    public static final void sandbox(){
+    public static final void sandbox() {
         KERNEL.sandbox();
     }
+
     /**
      * 将汉字句子转换拼音，支持声母带音调，数字音调，无音调三种格式
      *
@@ -55,18 +56,21 @@ public abstract class Bopomofo4j {
 
     /**
      * 将繁体中文转换为简体中文
+     * 
      * @param words 繁体中文句子
      * @return 简体中文句子
      */
-    public static final String cht2chs(String words){
+    public static final String cht2chs(String words) {
         return KERNEL.cht2chs(words);
     }
+
     /**
      * 将简体中文转换为繁体中文
+     * 
      * @param words 简体中文句子
      * @return 繁体中文句子
      */
-    public static final String chs2cht(String words){
+    public static final String chs2cht(String words) {
         return KERNEL.chs2cht(words);
     }
 
