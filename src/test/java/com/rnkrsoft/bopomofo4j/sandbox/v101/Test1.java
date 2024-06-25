@@ -29,7 +29,8 @@ public class Test1 {
     @Test
     public void testGetChineseChars() throws Exception {
        //汉语句子->无音调拼音 骨髓
-        String v3 = Bopomofo4j.pinyin("骨髓",2, false, false, " ");
+        String v3 = Bopomofo4j.pinyin("24小时监视",2, false, false, " ");
+        System.out.println(v3);
         String[] pinyins = v3.split(" ");
         Map<String, String[]> map = new HashMap<>();
         String chineseCharsStr;
