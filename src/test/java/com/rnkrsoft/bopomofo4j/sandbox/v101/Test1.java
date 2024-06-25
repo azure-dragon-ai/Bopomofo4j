@@ -32,14 +32,21 @@ public class Test1 {
     @Test
     public void testGetChineseChars() throws Exception {
         // 大熊猫保护红线
-        this.getChineseChars("24华动&实验");
-        String fileName = "docs/block/大熊猫保护红线.txt";
+        String path = "docs/block"; // 要遍历的路径
+        File file = new File(path); // 获取其file对象
+        File[] fs = file.listFiles(); // 遍历path下的文件和目录，放在File数组中
+        String fileName;
+        for (File f : fs) { // 遍历File[]数组
+            if (!f.isDirectory()) {
+                fileName = path + "/" + f.getName() + ".txt";
 
-        try (Scanner sc = new Scanner(new FileReader(fileName))) {
-            while (sc.hasNextLine()) { // 按行读取字符串
-                String line = sc.nextLine();
-                this.getChineseChars(line);
-            }
+                try (Scanner sc = new Scanner(new FileReader(fileName))) {
+                    while (sc.hasNextLine()) { // 按行读取字符串
+                        String line = sc.nextLine();
+                        this.getChineseChars(line);
+                    }
+                }
+            }       
         }
     }
 
