@@ -36,24 +36,29 @@ public class Test1 {
         String chineseCharsStr;
         String[] chineseChars;
         String key = "";
+        long num = 1;
         for(int i = 0 ; i < pinyins.length ; i++) {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
             System.out.println("---------------");
-            System.out.println(chineseCharsStr);
+            //System.out.println(chineseCharsStr);
             chineseChars = chineseCharsStr.split(" ");
-            System.out.println(chineseChars.length);
+            num = num * chineseChars.length;
+            //System.out.println(chineseChars.length);
             map.put(key, chineseChars);
         }
+        System.out.println(num);
         List<String> list = new ArrayList<>();
         key = "pinyin" + 0;
         chineseChars = map.get(key);
-        for(int i = 0 ; i < chineseChars.length ; i++) {
+        int min = Math.round(100 / pinyins.length);
+        int len = Math.min(min, chineseChars.length);
+        for(int i = 0 ; i < len ; i++) {
             list.add(chineseChars[i]);
         }
         for(int i = 1 ; i < pinyins.length ; i++) {
             key = "pinyin" + i;
-            list = this.make(list, map.get(key));
+            list = this.make(list, map.get(key), min);
         }
         
         for(int i = 0 ; i < list.size() ; i++) {
@@ -61,9 +66,9 @@ public class Test1 {
         }
     }
 
-    public List<String> make(List<String> list, String[] chars) {
+    public List<String> make(List<String> list, String[] chars, int min) {
         List<String> newList = new ArrayList<>();
-        int len = Math.min(50, chars.length);
+        int len = Math.min(min, chars.length);
         for(int i = 0 ; i < list.size() ; i++) {
             for(int j = 0 ; j < len ; j++) {
                 newList.add(list.get(i) + chars[j]);
