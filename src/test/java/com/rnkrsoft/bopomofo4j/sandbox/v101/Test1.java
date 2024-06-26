@@ -29,7 +29,7 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
-        this.getChineseChars("抗议", null);
+        this.getChineseChars("抗议", null, null);
     }
 
     @Test
@@ -46,6 +46,13 @@ public class Test1 {
         }
         file1.createNewFile();
         FileWriter fileWritter1 = new FileWriter(file1, true);
+        String filePath2 = "docs/words1.txt";
+        File file2 = new File(filePath2);
+        if (file2.exists()) {
+            file2.delete();
+        }
+        file2.createNewFile();
+        FileWriter fileWritter2 = new FileWriter(file2, true);
         for (File f : fs) { // 遍历File[]数组
             if (!f.isDirectory()) {
                 fileName = path + "/" + f.getName();
@@ -54,16 +61,17 @@ public class Test1 {
                     while (sc.hasNextLine()) { // 按行读取字符串
                         String line = sc.nextLine();
                         if(!line.equals("")) {
-                            this.getChineseChars(line, fileWritter1);
+                            this.getChineseChars(line, fileWritter1, fileWritter2);
                         }
                     }
                 }
             }       
         }
         fileWritter1.close();
+        fileWritter2.close();
     }
 
-    public void getChineseChars(String words, FileWriter fileWritter1) throws Exception {
+    public void getChineseChars(String words, FileWriter fileWritter1, FileWriter fileWritter2) throws Exception {
         // 汉语句子->无音调拼音
         String v3 = Bopomofo4j.pinyin(words, 2, false, false, " ");
         System.out.println(v3);
@@ -115,8 +123,14 @@ public class Test1 {
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
             fileWritter.write(list.get(i) + "\n");
-            if(fileWritter1 != null) {
-                fileWritter1.write(list.get(i) + "\n");
+            if(list.get(i).indexOf("&") > 0) {
+                if(fileWritter2 != null) {
+                    fileWritter2.write(list.get(i) + "\n");
+                }
+            } else {
+                if(fileWritter1 != null) {
+                    fileWritter1.write(list.get(i) + "\n");
+                }
             }
         }
         fileWritter.close();
