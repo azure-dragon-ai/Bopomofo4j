@@ -1,10 +1,5 @@
 package com.rnkrsoft.bopomofo4j.sandbox.v101;
 
-import com.rnkrsoft.bopomofo4j.Bopomofo4j;
-import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
-import com.rnkrsoft.bopomofo4j.sandbox.v101.Vowels;
-import com.rnkrsoft.bopomofo4j.utils.JacksonUtil;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,8 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import com.rnkrsoft.bopomofo4j.Bopomofo4j;
+import com.rnkrsoft.bopomofo4j.protocol.IPinyinLibrary;
+import com.rnkrsoft.bopomofo4j.utils.JacksonUtil;
 
 /**
  * Created by rnkrsoft.com on 2019/9/19.
@@ -41,6 +39,13 @@ public class Test1 {
         File file = new File(path); // 获取其file对象
         File[] fs = file.listFiles(); // 遍历path下的文件和目录，放在File数组中
         String fileName;
+        String filePath1 = "docs/words.txt";
+        File file1 = new File(filePath1);
+        if (file1.exists()) {
+            file1.delete();
+        }
+        file1.createNewFile();
+        FileWriter fileWritter1 = new FileWriter(file1, true);
         for (File f : fs) { // 遍历File[]数组
             if (!f.isDirectory()) {
                 fileName = path + "/" + f.getName();
@@ -49,15 +54,16 @@ public class Test1 {
                     while (sc.hasNextLine()) { // 按行读取字符串
                         String line = sc.nextLine();
                         if(!line.equals("")) {
-                            this.getChineseChars(line);
+                            this.getChineseChars(line, fileWritter1);
                         }
                     }
                 }
             }       
         }
+        fileWritter1.close();
     }
 
-    public void getChineseChars(String words) throws Exception {
+    public void getChineseChars(String words, FileWriter fileWritter1) throws Exception {
         // 汉语句子->无音调拼音
         String v3 = Bopomofo4j.pinyin(words, 2, false, false, " ");
         System.out.println(v3);
@@ -98,26 +104,20 @@ public class Test1 {
         }
 
         String filePath = "docs/" + words + ".txt";
-        String filePath1 = "docs/words.txt";
         File file = new File(filePath);
-        File file1 = new File(filePath1);
+        
         if (file.exists()) {
             file.delete();
         }
-        if (file1.exists()) {
-            file1.delete();
-        }
+        
         file.createNewFile();
-        file1.createNewFile();
         FileWriter fileWritter = new FileWriter(file, true);
-        FileWriter fileWritter1 = new FileWriter(file1, true);
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
             fileWritter.write(list.get(i) + "\n");
             fileWritter1.write(list.get(i) + "\n");
         }
         fileWritter.close();
-        fileWritter1.close();
     }
 
     public List<String> make(List<String> list, String[] chars, int min, long num) {
