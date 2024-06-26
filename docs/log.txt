@@ -1,0 +1,221 @@
+Bopomofo4j local is last new version! use local version:100
+bao li
+777
+qing bao
+294
+fu bao
+945
+mei xiang
+308
+tian tian
+81
+qing zi
+196
+chu mai
+96
+nüe dai
+26
+shou ku
+80
+xiong mao & he qin
+20328
+hai gei han guo
+1260
+zhe xiu bu
+1584
+mai guo zei
+54
+shi dai guang chang
+35100
+han guo
+180
+mei guo
+126
+hua sheng dun dong wu yuan
+9676800
+di zhi da xiong mao
+730296
+hua sheng dun
+2016
+chu shi
+800
+shou zhu bao li
+225330
+ju jue da xiong mao fu mei
+151933320
+ju jue xiong mao fu mei
+16881480
+er bao bu chu guo men
+1270080
+chu shi hua dong
+102400
+mei guo
+126
+piao liang guo
+1080
+mei li jian
+21238
+fan dui da xiong mao & chu guo
+9144576
+di zhi da xiong mao & chu guo
+105162624
+di zhi da xiong mao & mei guo
+92017296
+bu yun xu & qu mei guo
+5778864
+bao li & qing bao & fu mei
+143915940
+er bao & mei guo
+18522
+er bao & chu guo
+21168
+er bao & hua dong
+18816
+bao li & na li dou bu qu
+641332692
+qing bao & na li dou bu qu
+242666424
+nüe dai
+26
+xie dong
+192
+gu sui
+209
+24 xiao shi jian shi
+2255000
+24 xiao shi jian kong
+270600
+gong kai tou pai
+5184
+lao shu
+429
+xia du
+210
+fu bao shou le
+37800
+chang di bu da
+40824
+huan jing cha
+3744
+hu yu
+1150
+fan dui
+84
+can wu ren dao
+33600
+ban chu fan yu yuan
+3360000
+ban chu fan zhi chang
+2782080
+wei guo bao fa sheng
+740880
+kang yi
+378
+di zhi
+966
+you jie
+646
+you xing
+285
+shi wei
+1750
+yao da yuan zi
+60480
+chu yu
+800
+li yong fu bao
+384615
+zhen yan
+504
+bai pai
+64
+diu ren
+10
+da xiong mao dan du li fa
+50349600
+dian ji
+1020
+nüe dai
+26
+jin qin
+231
+nüe dai
+26
+nüe dai dong wu
+6240
+nüe dai xing wei
+13650
+can ren dui dai
+6240
+long yang
+176
+qiu jin
+168
+xian zhi zi you
+330372
+zhe mo
+308
+zhe mo
+308
+ke ban
+270
+hua sheng dun guo jia dong wu yuan
+1654732800
+sheng die ge dong wu yuan
+10819200
+meng fei si dong wu yuan
+13708800
+mei xiang
+308
+tian tian
+81
+xiao qi ji
+50160
+bao li
+777
+qing bao
+294
+yun chuan
+84
+xin bao
+231
+ya ya
+400
+hua dong
+128
+yan jiu shi yan
+972000
+chou gu sui
+2299
+731 shi yan
+1800
+dian ji
+1020
+ren gong qu jing
+56160
+hua dong yan jiu
+69120
+hua dong shi yan
+230400
+sheng wu zhi yao
+463680
+hua dong yan jiu
+69120
+hua dong shi yan
+230400
+nao bu shou shu
+19800
+chou xie
+264
+yu zhong yan jiu
+351000
+tong yuan ji yin
+312000
+shi yan yan jiu
+972000
+shi yan
+1800
+hua dong & shi yan
+230400
+hua dong & yan jiu zhang hou e mo
+3948134400
