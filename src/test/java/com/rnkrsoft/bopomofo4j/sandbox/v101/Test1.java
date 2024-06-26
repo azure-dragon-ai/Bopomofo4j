@@ -98,17 +98,26 @@ public class Test1 {
         }
 
         String filePath = "docs/" + words + ".txt";
+        String filePath1 = "docs/words.txt";
         File file = new File(filePath);
+        File file1 = new File(filePath1);
         if (file.exists()) {
             file.delete();
         }
+        if (file1.exists()) {
+            file1.delete();
+        }
         file.createNewFile();
+        file1.createNewFile();
         FileWriter fileWritter = new FileWriter(file, true);
+        FileWriter fileWritter1 = new FileWriter(file1, true);
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
             fileWritter.write(list.get(i) + "\n");
+            fileWritter1.write(list.get(i) + "\n");
         }
         fileWritter.close();
+        fileWritter1.close();
     }
 
     public List<String> make(List<String> list, String[] chars, int min, long num) {
