@@ -119,7 +119,7 @@ public class Test1 {
     @Test
     public void testChineseChar() throws Exception {
         IPinyinLibrary pinyinLibrary = LocalPinyinLibrary.getPinyinLibrary();
-        Map<String, List<String>> chieseChars = pinyinLibrary.initChineseChars();
+        Map<String, List<String>> chieseChars = pinyinLibrary.initChineseChars(true);
         System.out.println(JacksonUtil.toJson(chieseChars));
     }
 }
