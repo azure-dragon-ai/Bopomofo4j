@@ -29,7 +29,7 @@ public class Test1 {
 
     @Test
     public void testGetChineseChars() throws Exception {
-        this.getChineseChars("抗议");
+        this.getChineseChars("抗议", null);
     }
 
     @Test
@@ -115,7 +115,9 @@ public class Test1 {
         for (int i = 0; i < list.size(); i++) {
             // System.out.println(list.get(i));
             fileWritter.write(list.get(i) + "\n");
-            fileWritter1.write(list.get(i) + "\n");
+            if(fileWritter1 != null) {
+                fileWritter1.write(list.get(i) + "\n");
+            }
         }
         fileWritter.close();
     }
