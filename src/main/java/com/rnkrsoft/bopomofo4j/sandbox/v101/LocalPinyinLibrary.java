@@ -93,7 +93,7 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
         return py1;
     }
 
-    public Map<String, List<String>> initChineseChars() {
+    public Map<String, List<String>> initChineseChars(boolean isCommon) {
         String key = "";
         String value = "";
         String k = "";
@@ -112,7 +112,13 @@ public class LocalPinyinLibrary implements IPinyinLibrary {
                     chs = new ArrayList<>();
                     // pinyin2chs.put(k, chs);
                 }
-                chs.add(key);
+                if(isCommon) {
+                    if(COMMON_WORDS.indexOf(key) > 0) {
+                        chs.add(key);
+                    }
+                } else {
+                    chs.add(key);
+                }
                 pinyin2chs.put(k, chs);
             }
         }

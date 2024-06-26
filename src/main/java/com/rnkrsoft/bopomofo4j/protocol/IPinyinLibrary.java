@@ -60,7 +60,7 @@ public interface IPinyinLibrary {
 
     public String getChar(String py);
 
-    public Map<String, List<String>> initChineseChars();
+    public Map<String, List<String>> initChineseChars(boolean isCommon);
 
     public List<String> getChineseChars(String w);
 
