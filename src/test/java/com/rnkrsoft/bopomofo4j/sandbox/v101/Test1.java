@@ -113,19 +113,20 @@ public class Test1 {
             key = "pinyin" + i;
             list = this.make(list, map.get(key), chars, min, num);
         }
-        /*int del = 0;
+        int add = 0;
+        List<String> newList = new ArrayList<>();
         for(int i = 0 ; i < list.size() ; i++) {
-            del = 1;
+            add = 0;
             for(int j = 0 ; j < chars.length ; j++) {
                 if(list.get(i).indexOf(chars[j]) >= 0) {
-                    del = 0;
+                    add = 1;
                     break;
                 }
             }
-            if(del == 1) {
-                list.remove(i);
+            if(add == 1) {
+                newList.add(list.get(i));
             }
-        }*/
+        }
 
         String filePath = "docs/" + words + ".txt";
         File file = new File(filePath);
@@ -136,16 +137,16 @@ public class Test1 {
         
         file.createNewFile();
         FileWriter fileWritter = new FileWriter(file, true);
-        for (int i = 0; i < list.size(); i++) {
-            // System.out.println(list.get(i));
-            fileWritter.write(list.get(i) + "\n");
-            if(list.get(i).indexOf("&") > 0) {
+        for (int i = 0; i < newList.size(); i++) {
+            // System.out.println(newList.get(i));
+            fileWritter.write(newList.get(i) + "\n");
+            if(newList.get(i).indexOf("&") > 0) {
                 if(fileWritter2 != null) {
-                    fileWritter2.write(list.get(i) + "\n");
+                    fileWritter2.write(newList.get(i) + "\n");
                 }
             } else {
                 if(fileWritter1 != null) {
-                    fileWritter1.write(list.get(i) + "\n");
+                    fileWritter1.write(newList.get(i) + "\n");
                 }
             }
         }
