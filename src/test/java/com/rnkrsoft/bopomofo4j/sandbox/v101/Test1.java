@@ -81,6 +81,7 @@ public class Test1 {
         String[] chineseChars;
         String key = "";
         long num = 1;
+        char[] chars = words.toCharArray();
         for (int i = 0; i < pinyins.length; i++) {
             key = "pinyin" + i;
             chineseCharsStr = Bopomofo4j.getChineseChars(pinyins[i], " ");
@@ -89,6 +90,7 @@ public class Test1 {
             chineseChars = chineseCharsStr.split(" ");
             num = num * chineseChars.length;
             // System.out.println(chineseChars.length);
+            Test1.insertElement(chineseChars, String.valueOf(chars[i]), 0);
             map.put(key, chineseChars);
         }
         System.out.println(num);
@@ -97,14 +99,12 @@ public class Test1 {
         chineseChars = map.get(key);
         int min = Math.round(400 / (pinyins.length * pinyins.length));
         int len;
-        num = 100;
+        //num = 100;
         if(num > 100000) {
             len = Math.min(min, chineseChars.length);
         } else {
             len = chineseChars.length;
         }
-        
-        char[] chars = words.toCharArray();
         for (int i = 0; i < len; i++) {
             for(int j = 0 ; j < chars.length ; j++) {
                 if(chineseChars[i].indexOf(chars[j]) >= 0) {
@@ -112,6 +112,7 @@ public class Test1 {
                 }
             }
         }
+        System.out.println(JacksonUtil.toJson(list));
         for (int i = 1; i < pinyins.length; i++) {
             key = "pinyin" + i;
             list = this.make(list, map.get(key), chars, min, num);
@@ -154,14 +155,23 @@ public class Test1 {
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < len; j++) {
                 str = list.get(i) + chars[j];
-                for(int k = 0 ; k < chars.length ; k++) {
-                    if(str.indexOf(chars[j]) >= 0) {
+                for(int k = 0 ; k < words.length ; k++) {
+                    if(str.indexOf(words[k]) >= 0) {
                         newList.add(str);
                     }
                 }
             }
         }
         return newList;
+    }
+
+    private static String[] insertElement(String original[], String element, int index) {
+        int length = original.length;
+        String destination[] = new String[length + 1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index + 1, length - index);
+        return destination;
     }
 
     @Test
