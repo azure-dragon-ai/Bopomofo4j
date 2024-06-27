@@ -90,7 +90,7 @@ public class Test1 {
             chineseChars = chineseCharsStr.split(" ");
             num = num * chineseChars.length;
             // System.out.println(chineseChars.length);
-            Test1.insertElement(chineseChars, String.valueOf(chars[i]), 0);
+            //Test1.insertElement(chineseChars, String.valueOf(chars[i]), 0);
             map.put(key, chineseChars);
         }
         System.out.println(num);
@@ -106,17 +106,26 @@ public class Test1 {
             len = chineseChars.length;
         }
         for (int i = 0; i < len; i++) {
-            for(int j = 0 ; j < chars.length ; j++) {
-                if(chineseChars[i].indexOf(chars[j]) >= 0) {
-                    list.add(chineseChars[i]);
-                }
-            }
+            list.add(chineseChars[i]);
         }
         System.out.println(JacksonUtil.toJson(list));
         for (int i = 1; i < pinyins.length; i++) {
             key = "pinyin" + i;
             list = this.make(list, map.get(key), chars, min, num);
         }
+        /*int del = 0;
+        for(int i = 0 ; i < list.size() ; i++) {
+            del = 1;
+            for(int j = 0 ; j < chars.length ; j++) {
+                if(list.get(i).indexOf(chars[j]) >= 0) {
+                    del = 0;
+                    break;
+                }
+            }
+            if(del == 1) {
+                list.remove(i);
+            }
+        }*/
 
         String filePath = "docs/" + words + ".txt";
         File file = new File(filePath);
@@ -155,11 +164,7 @@ public class Test1 {
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < len; j++) {
                 str = list.get(i) + chars[j];
-                for(int k = 0 ; k < words.length ; k++) {
-                    if(str.indexOf(words[k]) >= 0) {
-                        newList.add(str);
-                    }
-                }
+                newList.add(str);
             }
         }
         return newList;
