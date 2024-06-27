@@ -97,6 +97,7 @@ public class Test1 {
         chineseChars = map.get(key);
         int min = Math.round(400 / (pinyins.length * pinyins.length));
         int len;
+        num = 100;
         if(num > 100000) {
             len = Math.min(min, chineseChars.length);
         } else {
@@ -104,11 +105,13 @@ public class Test1 {
         }
         
         for (int i = 0; i < len; i++) {
-            list.add(chineseChars[i]);
+            if(words.indexOf(chineseChars[i]) >= 0) {
+                list.add(chineseChars[i]);
+            }
         }
         for (int i = 1; i < pinyins.length; i++) {
             key = "pinyin" + i;
-            list = this.make(list, map.get(key), min, num);
+            list = this.make(list, map.get(key), words, min, num);
         }
 
         String filePath = "docs/" + words + ".txt";
@@ -136,7 +139,7 @@ public class Test1 {
         fileWritter.close();
     }
 
-    public List<String> make(List<String> list, String[] chars, int min, long num) {
+    public List<String> make(List<String> list, String[] chars, String words, int min, long num) {
         List<String> newList = new ArrayList<>();
         int len;
         if(num > 100000) {
@@ -146,7 +149,9 @@ public class Test1 {
         }
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < len; j++) {
-                newList.add(list.get(i) + chars[j]);
+                if(words.indexOf(chars[j]) >= 0) {
+                    newList.add(list.get(i) + chars[j]);
+                }
             }
         }
         return newList;
